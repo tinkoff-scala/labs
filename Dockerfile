@@ -1,3 +1,3 @@
 FROM mozilla/sbt
 COPY . /files
-ENTRYPOINT ["/files"]
+ENTRYPOINT ["/files/entrypoint.sh"]

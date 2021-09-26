@@ -1,1 +1,1 @@
-sbt compile; scalafmtCheckAll; test
+sbt compile scalafmtCheckAll test

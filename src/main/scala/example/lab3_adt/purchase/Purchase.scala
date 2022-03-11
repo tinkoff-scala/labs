@@ -1,4 +1,4 @@
-package example.lab3.purchase
+package example.lab3_adt.purchase
 
 import java.time.Instant
 

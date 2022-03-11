@@ -1,6 +1,6 @@
-package example.lab3
+package example.lab3_adt
 
-import example.lab3.Tree.{Branch, Leaf, depth, maximum, size}
+import example.lab3_adt.Tree.{Branch, Leaf, depth, maximum, size}
 
 import scala.annotation.tailrec
 

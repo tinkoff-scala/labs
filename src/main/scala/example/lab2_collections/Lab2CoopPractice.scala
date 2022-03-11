@@ -1,4 +1,4 @@
-package example.lab2
+package example.lab2_collections
 
 object Lab2CoopPractice extends App {
   // Write code which prints 0 if a given list is empty, "1, element value" if list has 1 element, whole list if more than one

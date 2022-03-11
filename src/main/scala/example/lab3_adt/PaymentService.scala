@@ -1,4 +1,4 @@
-package example.lab3
+package example.lab3_adt
 
 final case class AccountNumber(value: String) extends AnyVal
 final case class CardNumber(value: String) extends AnyVal

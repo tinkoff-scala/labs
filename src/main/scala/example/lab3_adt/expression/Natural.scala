@@ -1,4 +1,4 @@
-package example.lab3.expression
+package example.lab3_adt.expression
 
 sealed trait Natural
 object Natural {

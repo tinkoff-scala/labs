@@ -1,4 +1,4 @@
-package example.lab3.bool
+package example.lab3_adt.bool
 
 sealed trait Bool {
   def and(other: Bool): Bool

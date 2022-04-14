@@ -9,10 +9,11 @@ object CyclicBarrierApp extends IOApp {
   override def run(args: List[String]): IO[ExitCode] =
     for {
       b <- CyclicBarrier[IO](2)
-      f1 <- (Console[IO].println("fast fiber before barrier") >>
-        b.await >>
-        Console[IO].println("fast fiber after barrier")
-        ).start
+      f1 <- {
+        Console[IO].println("fast fiber before barrier") >>
+          b.await >>
+          Console[IO].println("fast fiber after barrier")
+      }.start
       f2 <- (IO.sleep(1.second) >>
         Console[IO].println("slow fiber before barrier") >>
         IO.sleep(1.second) >>

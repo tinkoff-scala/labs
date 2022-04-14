@@ -5,7 +5,7 @@ import cats.implicits._
 
 object DeferredAttempt extends IOApp {
   def start(d: Deferred[IO, Int]): IO[Unit] = {
-    val attemptCompletion: Int => IO[Unit] = n => d.complete(n).attempt.void
+    def attemptCompletion(n: Int): IO[Unit] = d.complete(n).attempt.void
 
     List(
       IO.race(attemptCompletion(1), attemptCompletion(2)),

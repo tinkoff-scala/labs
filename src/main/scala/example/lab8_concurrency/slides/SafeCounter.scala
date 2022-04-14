@@ -21,15 +21,15 @@ object SafeCounter extends IOApp {
     else
       counter
         .updateAndGet(_ + 1)
-        .flatMap(value => IO.delay(println(value)))
+        //.flatMap(value => IO.delay(println(value)))
         .flatMap(_ => increaseRefRecursivelyAndPrint(counter, add - 1))
   }
 
   def runImpure(): IO[Unit] =
     for {
-      first <- increaseRecursivelyAndPrint(10000).start
-      second <- increaseRecursivelyAndPrint(10000).start
-      third <- increaseRecursivelyAndPrint(10000).start
+      first <- increaseRecursivelyAndPrint(100000).start
+      second <- increaseRecursivelyAndPrint(100000).start
+      third <- increaseRecursivelyAndPrint(100000).start
       _ <- (first.join, second.join, third.join).tupled
       _ <- IO.delay(println(s"final value $counter"))
     } yield ()
@@ -37,16 +37,16 @@ object SafeCounter extends IOApp {
   def runPure(): IO[Unit] =
     for {
       ref <- Ref[IO].of(0)
-      first <- increaseRefRecursivelyAndPrint(ref, 10000).start
-      second <- increaseRefRecursivelyAndPrint(ref, 10000).start
-      third <- increaseRefRecursivelyAndPrint(ref, 10000).start
+      first <- increaseRefRecursivelyAndPrint(ref, 1000000).start
+      second <- increaseRefRecursivelyAndPrint(ref, 1000000).start
+      third <- increaseRefRecursivelyAndPrint(ref, 1000000).start
       _ <- (first.join, second.join, third.join).tupled
       finalValue <- ref.get
       _ <- IO.delay(println(s"final value $finalValue"))
     } yield ()
 
   override def run(args: List[String]): IO[ExitCode] = {
-    runImpure().as(ExitCode.Success)
-    //    runPure().as(ExitCode.Success)
+//    runImpure().as(ExitCode.Success)
+    runPure().as(ExitCode.Success)
   }
 }

@@ -6,5 +6,5 @@ ThisBuild / version          := "0.1.0-SNAPSHOT"
 lazy val root = (project in file("."))
   .settings(
     name := "labs",
-    libraryDependencies ++= Seq(scalaTest % Test, cats, `cats-effect`)
+    libraryDependencies ++= Seq(scalaTest % Test, cats, `cats-effect`, fs2)
   )
